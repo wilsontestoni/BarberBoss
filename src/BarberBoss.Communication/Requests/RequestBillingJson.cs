@@ -11,5 +11,5 @@ public class RequestBillingJson
     public string? Notes { get; set; }
     public PaymentMethod PaymentMethod { get; set; }
     public Status Status { get; set; }
-    public DateOnly Date { get; set; }
+    public DateTime Date { get; set; }
 }
