@@ -1,4 +1,5 @@
 using BarberBoss.Api.Filters;
+using BarberBoss.Api.Middleware;
 using BarberBoss.Application;
 using Scalar.AspNetCore;
 
@@ -22,6 +23,8 @@ if (app.Environment.IsDevelopment())
     app.MapOpenApi();
     app.MapScalarApiReference();
 }
+
+app.UseMiddleware<CultureMiddleware>();
 
 app.UseHttpsRedirection();
 
