@@ -1,4 +1,5 @@
-﻿using BarberBoss.Communication.Requests;
+﻿using AutoMapper;
+using BarberBoss.Communication.Requests;
 using BarberBoss.Communication.Responses;
 using CashFlow.Exception.ExceptionsBase;
 using FluentValidation;
@@ -7,9 +8,18 @@ namespace BarberBoss.Application.UseCases.Billings.Register;
 
 public class RegisterBillingUseCase : IRegisterBillingUseCase
 {
+    private readonly IMapper _mapper;
+
+    public RegisterBillingUseCase(IMapper mapper)
+    {
+        _mapper = mapper;
+    }
+
     public ResponseRegisteredBillingJson Execute(RequestBillingJson request)
     {
         Validate(request);
+
+        var entity = _mapper.Map<RequestBillingJson>(request);
 
         return new ResponseRegisteredBillingJson
         {
