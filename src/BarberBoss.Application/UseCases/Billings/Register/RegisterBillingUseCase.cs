@@ -1,32 +1,37 @@
 ﻿using AutoMapper;
 using BarberBoss.Communication.Requests;
 using BarberBoss.Communication.Responses;
+using BarberBoss.Domain.Entities;
+using BarberBoss.Domain.Repositories;
+using BarberBoss.Domain.Repositories.Billings;
 using CashFlow.Exception.ExceptionsBase;
-using FluentValidation;
 
 namespace BarberBoss.Application.UseCases.Billings.Register;
 
 public class RegisterBillingUseCase : IRegisterBillingUseCase
 {
+    private readonly IBillingRepositoriesWriteOnly _repository;
     private readonly IMapper _mapper;
+    private readonly IUnityOfWork _unityOfWork;
 
-    public RegisterBillingUseCase(IMapper mapper)
+    public RegisterBillingUseCase(IBillingRepositoriesWriteOnly repository, IMapper mapper, IUnityOfWork unityOfWork)
     {
         _mapper = mapper;
+        _repository = repository;
+        _unityOfWork = unityOfWork;
     }
 
-    public ResponseRegisteredBillingJson Execute(RequestBillingJson request)
+    public async Task<ResponseRegisteredBillingJson> Execute(RequestBillingJson request)
     {
         Validate(request);
 
-        var entity = _mapper.Map<RequestBillingJson>(request);
+        var entity = _mapper.Map<Billing>(request); // Aqui falta o id e o createAt e updatedAt
 
-        return new ResponseRegisteredBillingJson
-        {
-            BarberName = "Test",
-            ClientName = "JoseTest",
-            ServiceName = "Corte de cabelo teste"
-        };
+        await _repository.Add(entity);
+        await _unityOfWork.Commit();
+
+        return _mapper.Map<ResponseRegisteredBillingJson>(entity);
+
     }
 
     private void Validate(RequestBillingJson request)
