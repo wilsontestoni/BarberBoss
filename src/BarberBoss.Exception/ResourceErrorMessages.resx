@@ -123,6 +123,9 @@
   <data name="BARBER_NAME_REQUIRED" xml:space="preserve">
     <value>The barber name is required</value>
   </data>
+  <data name="BILLING_NOT_FOUND" xml:space="preserve">
+    <value>Billing not found</value>
+  </data>
   <data name="CLIENT_NAME_REQUIRED" xml:space="preserve">
     <value>The client name is required</value>
   </data>

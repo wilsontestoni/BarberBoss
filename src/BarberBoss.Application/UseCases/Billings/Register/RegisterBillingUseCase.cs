@@ -25,13 +25,12 @@ public class RegisterBillingUseCase : IRegisterBillingUseCase
     {
         Validate(request);
 
-        var entity = _mapper.Map<Billing>(request); // Aqui falta o id e o createAt e updatedAt
+        var entity = _mapper.Map<Billing>(request);
 
         await _repository.Add(entity);
         await _unityOfWork.Commit();
 
         return _mapper.Map<ResponseRegisteredBillingJson>(entity);
-
     }
 
     private void Validate(RequestBillingJson request)

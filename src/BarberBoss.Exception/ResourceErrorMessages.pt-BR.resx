@@ -123,6 +123,9 @@
   <data name="BARBER_NAME_REQUIRED" xml:space="preserve">
     <value>O nome do barbeiro é obrigatório</value>
   </data>
+  <data name="BILLING_NOT_FOUND" xml:space="preserve">
+    <value>Faturamento não encontrado</value>
+  </data>
   <data name="CLIENT_NAME_REQUIRED" xml:space="preserve">
     <value>O nome do cliente é obrigatório</value>
   </data>
