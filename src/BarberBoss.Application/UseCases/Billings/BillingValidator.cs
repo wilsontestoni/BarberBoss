@@ -2,11 +2,11 @@
 using BarberBoss.Exception;
 using FluentValidation;
 
-namespace BarberBoss.Application.UseCases.Billings.Register;
+namespace BarberBoss.Application.UseCases.Billings;
 
-public class RegiterBillingValidator : AbstractValidator<RequestBillingJson>
+public class BillingValidator : AbstractValidator<RequestBillingJson>
 {
-    public RegiterBillingValidator()
+    public BillingValidator()
     {
         RuleFor(billing => billing.BarberName).NotEmpty().WithMessage(ResourceErrorMessages.BARBER_NAME_REQUIRED);
         RuleFor(billing => billing.BarberName).Length(2, 80);

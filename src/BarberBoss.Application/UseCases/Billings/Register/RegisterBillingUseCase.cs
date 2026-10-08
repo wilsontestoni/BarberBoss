@@ -35,7 +35,7 @@ public class RegisterBillingUseCase : IRegisterBillingUseCase
 
     private void Validate(RequestBillingJson request)
     {
-        var validator = new RegiterBillingValidator();
+        var validator = new BillingValidator();
 
         var result = validator.Validate(request);
 

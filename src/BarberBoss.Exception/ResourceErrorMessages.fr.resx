@@ -123,6 +123,9 @@
   <data name="BARBER_NAME_REQUIRED" xml:space="preserve">
     <value>Le nom du coiffeur est requis.</value>
   </data>
+  <data name="BILLING_NOT_FOUND" xml:space="preserve">
+    <value>Facturation introuvable</value>
+  </data>
   <data name="CLIENT_NAME_REQUIRED" xml:space="preserve">
     <value>Le nom du client est requis.</value>
   </data>

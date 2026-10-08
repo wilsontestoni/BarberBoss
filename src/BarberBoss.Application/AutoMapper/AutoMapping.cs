@@ -2,6 +2,7 @@
 using BarberBoss.Communication.Requests;
 using BarberBoss.Communication.Responses;
 using BarberBoss.Domain.Entities;
+using BarberBoss.Domain.Repositories.Billings.Filters;
 
 namespace BarberBoss.Application.AutoMapper;
 
@@ -16,11 +17,13 @@ public class AutoMapping : Profile
     private void RequestToEntity()
     {
         CreateMap<RequestBillingJson, Billing>();
+        CreateMap<RequestGetAllBillingsJson, BillingFilter>();
     }
 
     private void EntityToResponse()
     {
         CreateMap<Billing, ResponseRegisteredBillingJson>();
         CreateMap<Billing, ResponseBillingJson>();
+        CreateMap<Billing, ResponseShortBillingJson>();
     }
 }
