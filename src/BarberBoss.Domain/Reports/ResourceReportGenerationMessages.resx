@@ -120,11 +120,17 @@
   <data name="AMOUNT" xml:space="preserve">
     <value>Amount</value>
   </data>
+  <data name="BILLINGS_FOR" xml:space="preserve">
+    <value>Billings for</value>
+  </data>
   <data name="CARD" xml:space="preserve">
     <value>Credit card</value>
   </data>
   <data name="CASH" xml:space="preserve">
     <value>Cash</value>
+  </data>
+  <data name="COMPANY_NAME" xml:space="preserve">
+    <value>BARBERSHOP</value>
   </data>
   <data name="DATE" xml:space="preserve">
     <value>Date</value>
@@ -143,5 +149,8 @@
   </data>
   <data name="TITLE" xml:space="preserve">
     <value>Title</value>
+  </data>
+  <data name="WEEKLY_BILLING" xml:space="preserve">
+    <value>Weekly billing</value>
   </data>
 </root>

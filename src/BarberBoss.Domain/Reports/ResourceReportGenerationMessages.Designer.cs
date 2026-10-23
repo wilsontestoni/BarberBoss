@@ -70,6 +70,15 @@ namespace BarberBoss.Domain.Reports {
         }
         
         /// <summary>
+        ///   Looks up a localized string similar to Billings for.
+        /// </summary>
+        public static string BILLINGS_FOR {
+            get {
+                return ResourceManager.GetString("BILLINGS_FOR", resourceCulture);
+            }
+        }
+        
+        /// <summary>
         ///   Looks up a localized string similar to Credit card.
         /// </summary>
         public static string CARD {
@@ -84,6 +93,15 @@ namespace BarberBoss.Domain.Reports {
         public static string CASH {
             get {
                 return ResourceManager.GetString("CASH", resourceCulture);
+            }
+        }
+        
+        /// <summary>
+        ///   Looks up a localized string similar to BARBERSHOP.
+        /// </summary>
+        public static string COMPANY_NAME {
+            get {
+                return ResourceManager.GetString("COMPANY_NAME", resourceCulture);
             }
         }
         
@@ -138,6 +156,15 @@ namespace BarberBoss.Domain.Reports {
         public static string TITLE {
             get {
                 return ResourceManager.GetString("TITLE", resourceCulture);
+            }
+        }
+        
+        /// <summary>
+        ///   Looks up a localized string similar to Weekly billing.
+        /// </summary>
+        public static string WEEKLY_BILLING {
+            get {
+                return ResourceManager.GetString("WEEKLY_BILLING", resourceCulture);
             }
         }
     }

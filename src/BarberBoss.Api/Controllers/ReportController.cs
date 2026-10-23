@@ -1,5 +1,6 @@
 ﻿using BarberBoss.Application.UseCases.Billings.Register;
 using BarberBoss.Application.UseCases.Billings.Reports.Excel;
+using BarberBoss.Application.UseCases.Billings.Reports.Pdf;
 using BarberBoss.Communication.Requests;
 using BarberBoss.Communication.Responses;
 using Microsoft.AspNetCore.Mvc;
@@ -11,7 +12,7 @@ namespace BarberBoss.Api.Controllers;
 [ApiController]
 public class ReportController : ControllerBase
 {
-    [HttpGet("Excel")]
+    [HttpGet("excel")]
     [ProducesResponseType(typeof(FileContentResult), StatusCodes.Status200OK)]
     [ProducesResponseType(StatusCodes.Status204NoContent)]
     public async Task<IActionResult> GetExcel(
@@ -26,5 +27,22 @@ public class ReportController : ControllerBase
         }
 
         return File(file, MediaTypeNames.Application.Octet, "report.xlsx");
+    }
+
+    [HttpGet("pdf")]
+    [ProducesResponseType(typeof(FileContentResult), StatusCodes.Status200OK)]
+    [ProducesResponseType(StatusCodes.Status204NoContent)]
+    public async Task<IActionResult> GetPdf(
+       [FromServices] IGenerateBillingsReportPdfUseCase useCase,
+       [FromHeader] DateOnly month)
+    {
+        byte[] file = await useCase.Execute(month);
+
+        if (file.Length <= 0)
+        {
+            return NoContent();
+        }
+
+        return File(file, MediaTypeNames.Application.Pdf, "report.pdf");
     }
 }
