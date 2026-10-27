@@ -28,7 +28,7 @@ public class GenerateBillingsReportPdfUseCase : IGenerateBillingsReportPdfUseCas
         GlobalFontSettings.FontResolver = new BillingsReportFontResolver();
     }
 
-    public async Task<byte[]> Execute(DateOnly month)
+    public async Task<byte[]> Execute()
     {
         var billings = await _repository.FilterByWeek();
 
@@ -37,7 +37,7 @@ public class GenerateBillingsReportPdfUseCase : IGenerateBillingsReportPdfUseCas
             return [];
         }
 
-        var document = CreateDocument(month);
+        var document = CreateDocument();
         var page = CreatePage(document);
 
         var totalBillings = billings.Sum(billing => billing.Amount);
@@ -102,13 +102,13 @@ public class GenerateBillingsReportPdfUseCase : IGenerateBillingsReportPdfUseCas
         return RenderDocument(document);
     }
 
-    public Document CreateDocument(DateOnly month)
+    public Document CreateDocument()
     {
         var document = new Document
         {
             Info =
                 {
-                    Title = $"{ResourceReportGenerationMessages.BILLINGS_FOR} {month:Y}",
+                    Title = $"{ResourceReportGenerationMessages.BARBER_BOSS_REPORT}",
                     Author = "BarberBoss"
                 }
         };

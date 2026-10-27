@@ -120,6 +120,9 @@
   <data name="AMOUNT" xml:space="preserve">
     <value>Valeur</value>
   </data>
+  <data name="BARBER_BOSS_REPORT" xml:space="preserve">
+    <value>Relatório semanal do Barber Boss</value>
+  </data>
   <data name="BILLINGS_FOR" xml:space="preserve">
     <value>Facturation pour</value>
   </data>

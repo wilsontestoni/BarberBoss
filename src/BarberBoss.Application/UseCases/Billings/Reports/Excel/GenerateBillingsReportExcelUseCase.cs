@@ -18,7 +18,7 @@ public class GenerateBillingsReportExcelUseCase : IGenerateBillingsReportExcelUs
         _repository = repository;
     }
 
-    public async Task<byte[]> Execute(DateOnly month)
+    public async Task<byte[]> Execute()
     {
         var billings = await _repository.FilterByWeek();
 
@@ -32,7 +32,7 @@ public class GenerateBillingsReportExcelUseCase : IGenerateBillingsReportExcelUs
         workbook.Style.Font.FontSize = 12;
         workbook.Style.Font.FontName = "Times New Roman";
 
-        var worksheet = workbook.Worksheets.Add(month.ToString("Y"));
+        var worksheet = workbook.Worksheets.Add(ResourceReportGenerationMessages.BARBER_BOSS_REPORT);
 
         CreateHeader(worksheet);
 

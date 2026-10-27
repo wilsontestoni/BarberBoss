@@ -70,6 +70,15 @@ namespace BarberBoss.Domain.Reports {
         }
         
         /// <summary>
+        ///   Looks up a localized string similar to Barber Boss week report.
+        /// </summary>
+        public static string BARBER_BOSS_REPORT {
+            get {
+                return ResourceManager.GetString("BARBER_BOSS_REPORT", resourceCulture);
+            }
+        }
+        
+        /// <summary>
         ///   Looks up a localized string similar to Billings for.
         /// </summary>
         public static string BILLINGS_FOR {

@@ -2,5 +2,5 @@
 
 public interface IGenerateBillingsReportPdfUseCase
 {
-    Task<byte[]> Execute(DateOnly month);
+    Task<byte[]> Execute();
 }

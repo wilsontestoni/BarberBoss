@@ -16,10 +16,9 @@ public class ReportController : ControllerBase
     [ProducesResponseType(typeof(FileContentResult), StatusCodes.Status200OK)]
     [ProducesResponseType(StatusCodes.Status204NoContent)]
     public async Task<IActionResult> GetExcel(
-       [FromServices] IGenerateBillingsReportExcelUseCase useCase,
-       [FromHeader] DateOnly month)
+       [FromServices] IGenerateBillingsReportExcelUseCase useCase)
     {
-        byte[] file = await useCase.Execute(month);
+        byte[] file = await useCase.Execute();
 
         if (file.Length <= 0)
         {
@@ -33,10 +32,9 @@ public class ReportController : ControllerBase
     [ProducesResponseType(typeof(FileContentResult), StatusCodes.Status200OK)]
     [ProducesResponseType(StatusCodes.Status204NoContent)]
     public async Task<IActionResult> GetPdf(
-       [FromServices] IGenerateBillingsReportPdfUseCase useCase,
-       [FromHeader] DateOnly month)
+       [FromServices] IGenerateBillingsReportPdfUseCase useCase)
     {
-        byte[] file = await useCase.Execute(month);
+        byte[] file = await useCase.Execute();
 
         if (file.Length <= 0)
         {
