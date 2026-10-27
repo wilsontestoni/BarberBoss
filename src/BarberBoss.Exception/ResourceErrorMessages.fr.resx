@@ -120,6 +120,9 @@
   <data name="AMOUNT_MUST_BE_GRATHER_OR_EQUAL_ZERO" xml:space="preserve">
     <value>Le montant doit être supérieur ou égal à zéro.</value>
   </data>
+  <data name="AMOUNT_MUST_BE_ZERO_WHEN_CANCELED" xml:space="preserve">
+    <value>Le montant doit être égal à zéro en cas d’annulation.</value>
+  </data>
   <data name="BARBER_NAME_REQUIRED" xml:space="preserve">
     <value>Le nom du coiffeur est requis.</value>
   </data>

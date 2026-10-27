@@ -120,6 +120,9 @@
   <data name="AMOUNT_MUST_BE_GRATHER_OR_EQUAL_ZERO" xml:space="preserve">
     <value>O valor deve ser maior ou igual a zero.</value>
   </data>
+  <data name="AMOUNT_MUST_BE_ZERO_WHEN_CANCELED" xml:space="preserve">
+    <value>O valor deve ser zero quando cancelado.</value>
+  </data>
   <data name="BARBER_NAME_REQUIRED" xml:space="preserve">
     <value>O nome do barbeiro é obrigatório</value>
   </data>

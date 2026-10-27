@@ -8,6 +8,7 @@ using MigraDoc.DocumentObjectModel.Tables;
 using MigraDoc.Rendering;
 using PdfSharp.Drawing;
 using PdfSharp.Fonts;
+using System.Globalization;
 using System.Reflection;
 
 namespace BarberBoss.Application.UseCases.Billings.Reports.Pdf;
@@ -29,7 +30,7 @@ public class GenerateBillingsReportPdfUseCase : IGenerateBillingsReportPdfUseCas
 
     public async Task<byte[]> Execute(DateOnly month)
     {
-        var billings = await _repository.FilterByMonth(month);
+        var billings = await _repository.FilterByWeek();
 
         if (billings.Count == 0)
         {
@@ -56,7 +57,20 @@ public class GenerateBillingsReportPdfUseCase : IGenerateBillingsReportPdfUseCas
             row = table.AddRow();
             row.Height = HEIGHT_ROW_EXPENSE_TABLE;
 
-            row.Cells[0].AddParagraph(billing.Date.ToString("D"));
+            var culture = CultureInfo.CurrentCulture;
+
+            var dateFormat = culture.Name switch
+            {
+                "pt-BR" => "dd 'de' MMMM 'de' yyyy",
+                "en-US" => "MMMM dd, yyyy",
+                "en" => "MMMM dd, yyyy",
+                "fr-FR" => "dd MMMM yyyy",
+                _ => "dd MMMM yyyy"
+            };
+
+            row.Cells[0].AddParagraph(
+                billing.Date.ToString(dateFormat, culture)
+            );
             SetStyleBaseForExpenseInformation(row.Cells[0]);
             row.Cells[0].Format.LeftIndent = 7;
 
@@ -79,14 +93,10 @@ public class GenerateBillingsReportPdfUseCase : IGenerateBillingsReportPdfUseCas
                 descriptionRow.Cells[0].VerticalAlignment = VerticalAlignment.Center;
                 descriptionRow.Cells[0].MergeRight = 2;
                 descriptionRow.Cells[0].Format.LeftIndent = 7;
-
-                //row.Cells[3].MergeDown = 1;
             }
 
             AddWhiteSpace(table);
-
-        }
-        ;
+        };
 
 
         return RenderDocument(document);
@@ -195,7 +205,6 @@ public class GenerateBillingsReportPdfUseCase : IGenerateBillingsReportPdfUseCas
         cell2.Shading.Color = ColorsHelper.DARK_GREEN;
         cell3.Shading.Color = ColorsHelper.DARK_GREEN;
         cell1.VerticalAlignment = VerticalAlignment.Center;
-        //cell.MergeRight = 2;
         cell1.Format.LeftIndent = 7;
     }
 

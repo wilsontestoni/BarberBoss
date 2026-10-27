@@ -70,6 +70,15 @@ namespace BarberBoss.Exception {
         }
         
         /// <summary>
+        ///   Looks up a localized string similar to The amount must be zero when canceled.
+        /// </summary>
+        public static string AMOUNT_MUST_BE_ZERO_WHEN_CANCELED {
+            get {
+                return ResourceManager.GetString("AMOUNT_MUST_BE_ZERO_WHEN_CANCELED", resourceCulture);
+            }
+        }
+        
+        /// <summary>
         ///   Looks up a localized string similar to The barber name is required.
         /// </summary>
         public static string BARBER_NAME_REQUIRED {

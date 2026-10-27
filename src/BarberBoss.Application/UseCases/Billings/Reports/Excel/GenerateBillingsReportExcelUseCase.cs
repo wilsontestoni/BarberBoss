@@ -20,7 +20,7 @@ public class GenerateBillingsReportExcelUseCase : IGenerateBillingsReportExcelUs
 
     public async Task<byte[]> Execute(DateOnly month)
     {
-        var billings = await _repository.FilterByMonth(month);
+        var billings = await _repository.FilterByWeek();
 
         if (billings.Count == 0)
         {
